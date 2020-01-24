@@ -8,7 +8,6 @@ export function usersReducer(
   state = { loading: true, success: false, error: false, users: {} },
   action
 ) {
-  console.log("namrata", action);
   switch (action.type) {
     case GET_USERS_REQUEST:
       return Object.assign({}, state, {
@@ -17,13 +16,12 @@ export function usersReducer(
         error: false
       });
     case GET_USERS_SUCCESS:
-      const user = Object.assign({}, state, {
+      return Object.assign({}, state, {
         loading: false,
         success: true,
         error: false,
         users: action.response.data
       });
-      return user;
     case GET_USERS_FAILURE:
       return Object.assign({}, state, {
         loading: false,
